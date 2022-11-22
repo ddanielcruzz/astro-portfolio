@@ -1,0 +1,65 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import "@fontsource/inter-tight";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        margin-top: 40vh;
+        transform: translateY(-50%);
+      }
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+      p {
+        font-size: 1.5rem;
+        opacity: 0.8;
+        font-weight: 200;
+      }
+      h1,
+      p {
+        text-align: center;
+      }
+      .bg-image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      @media screen and (min-width: 640px) {
+        h1 {
+          font-size: 6rem;
+        }
+        p {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img class="bg-image" src="/astro-bg.png" alt="" srcset="" />
+    </div>
+    <main>
+      <h1>Daniel Cruz</h1>
+      <p>
+        Front End developer focused on developing great applications that users
+        love.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>
