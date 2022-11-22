@@ -10,6 +10,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
+      body {
+        overflow-y: hidden;
+        --animation-duration: 640ms;
+      }
       main {
         margin-top: 40vh;
         transform: translateY(-50%);
@@ -23,6 +27,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
         opacity: 0.8;
         font-weight: 200;
       }
+
       h1,
       p {
         text-align: center;
@@ -54,12 +59,33 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
       <img class="bg-image" src="/astro-bg.png" alt="" srcset="" />
     </div>
     <main>
-      <h1>Daniel Cruz</h1>
-      <p>
+      <h1 class="title">Daniel Cruz</h1>
+      <p class="description">
         Front End developer focused on developing great applications that users
         love.
       </p>
     </main>
-    <Footer />
+    <div class="footer">
+      <Footer />
+    </div>
+    <script>
+      import { gsap } from "gsap";
+      const tl = gsap.timeline();
+      const baseAnimation = { y: "50%", opacity: 0, duration: 0.64 };
+
+      tl.from(".bg-image", {
+        opacity: 0,
+        keys: {
+          y: {
+            "0%": "100%",
+            "30%": "0%",
+          },
+        },
+        duration: 1,
+      });
+      tl.from(".title", baseAnimation, "<50%");
+      tl.from(".description", baseAnimation, "<50%");
+      tl.from(".footer", baseAnimation, "<50%");
+    </script>
   </body>
 </html>
