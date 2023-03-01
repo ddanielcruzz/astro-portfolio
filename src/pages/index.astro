@@ -13,6 +13,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
       body {
         overflow-y: hidden;
         --animation-duration: 640ms;
+        opacity: 0;
       }
       main {
         margin-top: 40vh;
@@ -74,7 +75,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
       window.onload = () => {
         const tl = gsap.timeline();
         const baseAnimation = { y: "50%", opacity: 0, duration: 0.64 };
-
+        tl.fromTo("body", { opacity: 0 }, { opacity: 1 });
         tl.from(".bg-image", {
           opacity: 0,
           keys: {
